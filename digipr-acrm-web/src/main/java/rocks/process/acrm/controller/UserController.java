@@ -20,14 +20,14 @@ public class UserController {
     @Autowired
     private AgentService agentService;
 
-    @GetMapping("/login")
+    @GetMapping("/Sign In")
     public String getLoginView() {
-        return "agentLogin.html";
+        return "loginhome.html";
     }
 
     @GetMapping("/user/register")
     public String getRegisterView() {
-        return "agentRegister.html";
+        return "signup.html";
     }
 
     @PostMapping("/user/register")
@@ -40,10 +40,10 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/profile/edit")
-    public String getProfileView() {
-        return "agentEdit.html";
-    }
+   // @GetMapping("/profile/edit")
+   // public String getProfileView() {
+    //  return "agentEdit.html";
+   // }
 
     @GetMapping("/profile")
     public @ResponseBody Agent getProfile() {
