@@ -4,7 +4,7 @@ package rocks.process.acrm.data.domain;
  * Copyright (c) 2020. University of Applied Sciences and Arts Northwestern Switzerland FHNW.
  * All rights reserved.
  */
-
+import rocks.process.acrm.data.domain.Member;
 import javax.persistence.*;
 @Entity
 @Table(name = "t_job")
@@ -13,16 +13,11 @@ public class Job {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
-    /* @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "jnd_member_job",
-            joinColumns = @JoinColumn(name = "job_fk"),
-            inverseJoinColumns = @JoinColumn(name = "member_fk"))
+    @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "job_fk")
-    private Book book;
 
-     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Book book;
     @Enumerated(EnumType.STRING)
     private JobStatus jobStatus;
 
@@ -34,13 +29,14 @@ public class Job {
         this.id = id;
     }
 
-   /*  public Member getMember() {
+     public Member getMember() {
         return member;
     }
 
     public void setMember(Member member) {
         this.member = member;
     }
+
 
     public Book getBook() {
         return book;
@@ -58,5 +54,15 @@ public class Job {
         this.jobStatus = jobStatus;
     }
 
-    */
+   @Override
+   public boolean equals (Object o){
+        if(this==o) return true;
+        if(!(o instanceof Job)) return false;
+        return id != null && id.equals(((Job) o).getId());
+   }
+ @Override
+ public int hashCode() {
+        return getClass().hashCode();
+ }
+
 }

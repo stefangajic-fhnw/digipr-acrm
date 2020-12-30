@@ -23,21 +23,20 @@ public class Book {
     private String title;
     private String subtitle;
     private String comment;
-    /* @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "jnd_book_author",
             joinColumns = @JoinColumn(name = "book_fk"),
             inverseJoinColumns = @JoinColumn(name = "author_fk"))
     private List<Author> authors;
 
-     */
+
     private String yearOfPublication;
-    /* @OneToMany(fetch = FetchType.EAGER)
+     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "job_fk")
     private List<Job> bookWasInTheseJobs;
+
+     @ManyToOne(fetch=FetchType.LAZY)
     private Location locationOfBook;
-
-     */
-
 
     public Long getId() {
         return id;
@@ -73,15 +72,15 @@ public class Book {
     public String getSubtitle() {
         return subtitle;
     }
-  /*   public void setLocationOfBook(Location location) {
+    /*
+   public void setLocationOfBook(Location location) {
         this.locationOfBook = location;
     }
 
     public Location getLocationOfBook() {
         return locationOfBook;
-    }
+    } */
 
-   */
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
@@ -94,7 +93,7 @@ public class Book {
     public void setComment(String comment) {
         this.comment = comment;
     }
-/*
+
     public List<Author> getAuthors() {
         return authors;
     }
@@ -146,6 +145,16 @@ public class Book {
             }
         }
     }
+    @Override
+    public boolean equals (Object o){
+        if(this==o) return true;
+        if(!(o instanceof Book)) return false;
+        return id != null && id.equals(((Book) o).getId());
+    }
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
- */
+
 }

@@ -8,6 +8,7 @@ package rocks.process.acrm.data.domain;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,11 +17,12 @@ public class Institute {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
-   /*  @ManyToMany(cascade = CascadeType.ALL)
+     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "jnd_institute_author",
             joinColumns = @JoinColumn(name = "institute_fk"),
             inverseJoinColumns = @JoinColumn(name = "author_fk"))
     private List<Author> authors;
+     /*
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "institute_fk")
     private List<Location> location;
@@ -48,6 +50,17 @@ public class Institute {
 
 
    */
+    private List<Author> getAuthors(Institute institute){
+       return authors;
+    }
+    private void setAuthors(List<Author> authorInput){
+        if(authors == null){
+            authors = new ArrayList<>();
+        }
+        for(int i=0;i<authorInput.size();i++){
+            authors.add(authorInput.get(i));
+        }
+    }
     public String getName() {
         return name;
     }

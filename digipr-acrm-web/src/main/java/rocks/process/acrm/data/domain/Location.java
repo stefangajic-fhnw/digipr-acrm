@@ -20,13 +20,13 @@ public class Location {
     private Integer zipCode;
     private String city;
     private String country;
-   /* @OneToOne
     private String contactInfo;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "location_fk")
+
+    @OneToMany( mappedBy ="locationOfBook", cascade=CascadeType.ALL,orphanRemoval = true)
     private List<Book> books;
 
-    */
+
+
 
     public Long getId() {
         return id;
@@ -84,7 +84,7 @@ public class Location {
         this.country = country;
     }
 
-   /* public String getContactInfo() {
+    public String getContactInfo() {
         return contactInfo;
     }
 
@@ -100,5 +100,12 @@ public class Location {
         this.books = books;
     }
 
-    */
+  public void addBook(Book b){
+        books.add(b);
+  }
+  public void removeBook(Book b){
+        books.remove(b);
+  }
+
+
 }

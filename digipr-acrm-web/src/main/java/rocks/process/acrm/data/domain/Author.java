@@ -18,23 +18,23 @@ public class Author {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
 
-   /* @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "jnd_book_author",
             joinColumns = @JoinColumn(name = "author_fk"),
             inverseJoinColumns = @JoinColumn(name = "book_fk"))
     private List<Book> books;
 
-    */
+
     private String name;
     private String firstName;
     private String legalNotice;
-   /* @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "jnd_institute_author",
             joinColumns = @JoinColumn(name = "author_fk"),
             inverseJoinColumns = @JoinColumn(name = "institute_fk"))
     private List<Institute> institutes;
 
-    */
+
 
 
 

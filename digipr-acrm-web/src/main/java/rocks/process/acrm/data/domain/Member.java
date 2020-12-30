@@ -8,7 +8,7 @@ package rocks.process.acrm.data.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import rocks.process.acrm.data.domain.Job;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -27,11 +27,12 @@ public class Member {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // only create object property from JSON
     private String password;
     private String phone;
-   /* @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "job_fk")
+    @OneToMany(
+            mappedBy ="member", cascade = CascadeType.ALL, orphanRemoval = true
+    )
     private List<Job> jobs;
 
-    */
+
 
 
     public Integer getId() {
@@ -60,7 +61,7 @@ public class Member {
         this.password = password;
     }
 
-    /*public List<Job> getJobs() {
+    public List<Job> getJobs() {
         return jobs;
     }
 
@@ -68,7 +69,15 @@ public class Member {
         this.jobs = jobs;
     }
 
-     */
+    private void addJob(Job job){
+        jobs.add(job);
+    }
+    private void removeJob(Job job){
+        jobs.remove(job);
+    }
+
+
+
 
     public String getPhone() {
         return phone;
