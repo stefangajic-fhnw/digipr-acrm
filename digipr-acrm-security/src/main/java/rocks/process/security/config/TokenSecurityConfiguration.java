@@ -6,20 +6,19 @@
 package rocks.process.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
-import javax.persistence.EntityManager;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 public class TokenSecurityConfiguration {
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManagerFactory entityManagerFactorySecurity;
+    private final EntityManagerFactory entityManagerFactory;
 
     @Autowired
     public TokenSecurityConfiguration(DataSource dataSource, JpaVendorAdapter vendorAdapter, EntityManagerFactory entityManagerFactory) {
@@ -30,12 +29,7 @@ public class TokenSecurityConfiguration {
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
         entityManagerFactoryBean.setJpaProperties(additionalProperties());
         entityManagerFactoryBean.afterPropertiesSet();
-        this.entityManagerFactorySecurity = entityManagerFactoryBean.getObject();
-    }
-
-    @Bean
-    public EntityManager entityManagerSecurity() {
-        return entityManagerFactorySecurity.createEntityManager();
+        entityManagerFactoryBean.getObject();
     }
 
     private Properties additionalProperties() {

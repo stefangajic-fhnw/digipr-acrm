@@ -45,10 +45,6 @@ public class TokenSecurityProperties {
         BEARER_TYPE = bearerType;
     }
 
-    public long getRememberExpirationTime() {
-        return REMEMBER_EXPIRATION_TIME;
-    }
-
     public void setRememberExpirationTime(long rememberExpirationTime) {
         REMEMBER_EXPIRATION_TIME = rememberExpirationTime;
     }
@@ -61,24 +57,8 @@ public class TokenSecurityProperties {
         SESSION_EXPIRATION_TIME = sessionExpirationTime;
     }
 
-    public long getBearerExpirationTime() {
-        return BEARER_EXPIRATION_TIME;
-    }
-
-    public void setBearerExpirationTime(long bearerExpirationTime) {
-        BEARER_EXPIRATION_TIME = bearerExpirationTime;
-    }
-
-    public String getBearerTokenPrefix() {
-        return BEARER_TOKEN_PREFIX;
-    }
-
     public void setBearerTokenPrefix(String bearerTokenPrefix) {
         BEARER_TOKEN_PREFIX = bearerTokenPrefix;
-    }
-
-    public String getHeaderName() {
-        return HEADER_NAME;
     }
 
     public void setHeaderName(String headerName) {

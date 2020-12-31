@@ -46,12 +46,25 @@
                         <div class="col-12 col-md-9 mb-2 mb-md-0"><label>
                             <input class="form-control form-control-lg" type="email" placeholder="Enter your email...">
                         </label></div>
-                        <div class="col-12 col-md-3"><a class="btn btn-primary btn-block btn-lg" type="submit" onClick="myFunction()">Sign up!</a></div>
-                        <script>
-                            function myFunction() {
-                            alert("Hello\nHow are you?");
+                        <div class="col-12 col-md-3"><a class="btn btn-primary btn-block btn-lg" type="button" onClick="window.location.href='signup.html'">Sign up!</a></div>
+
+                        <!-- <script>
+                         function addData(){
+                                try{
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.onreadystatechange = function() {
+                                    if (xhr.readyState == 4) {
+                                        var data = xhr.responseText;
+                                        alert(data);
+                                            }
+                                        }
+                                    xhr.open('GET', 'webConnAPI', true);
+                                    xhr.send(null);
+                                    }catch(Excetpion){
+                                        alert('didnt work');
+                                            }
                                     }
-</script>
+                         </script> --->
                     </div>
                 </form>
             </div>
