@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-interface MemberRepository extends JpaRepository<Member, Long> {
-   /* Member findById(Integer id);
-
+public interface MemberRepository extends JpaRepository<Member, Long> {
+    Member findById(Integer id);
+/*
     Member findMemberByEmail(String email);
 
     Member findByEmailAndIdNot(String email, Integer memberId);
